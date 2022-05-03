@@ -21,7 +21,10 @@ WHERE name = 'Nevermind';
 SELECT artist, name, release_date as 'Albums of the 1990''s'
 FROM albums
 WHERE release_date >= '1990'
-AND release_date<= '1999';
+AND release_date <= '1999';
+#SELECT *
+#FROM albums
+#WHERE release_date BETWEEN 1989 and 2000
 
 #Returns the album name and corresponding artist name where the sales were less than 20M
 SELECT artist, name as 'Albums With Less Than 20m Certified Sales'
