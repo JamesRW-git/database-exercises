@@ -38,3 +38,15 @@ FROM employees as e
          JOIN salaries s on e.emp_no = s.emp_no
 WHERE dm.to_date > CURDATE()
   AND s.to_date > CURDATE();
+
+SELECT CONCAT(e.first_name, ' ', e.last_name)   as Employee,
+       d.dept_name                              AS Department,
+       CONCAT(e2.first_name, ' ', e2.last_name) as Manager
+FROM employees as e
+         JOIN dept_emp de on e.emp_no = de.emp_no
+         JOIN departments d on d.dept_no = de.dept_no
+         JOIN dept_manager dm on de.dept_no = dm.dept_no
+         JOIN employees e2 on e2.emp_no = dm.emp_no
+WHERE de.to_date > CURDATE()
+  AND dm.to_date > CURDATE();
+
