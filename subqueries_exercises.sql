@@ -29,5 +29,25 @@ AND emp_no IN (
     WHERE dm.to_date > CURDATE()
     );
 
+SELECT d.dept_name as Departments
+FROM departments as d
+WHERE dept_no IN (
+    SELECT dept_no
+    FROM dept_manager
+    WHERE emp_no IN (
+        SELECT emp_no
+        FROM employees
+        WHERE gender = 'f'
+        )
+    AND to_date > CURDATE()
+    );
+
+SELECT e.first_name as 'First Name', e.last_name as 'Last Name'
+FROM employees as e
+WHERE emp_no IN (
+    SELECT emp_no
+    FROM salaries
+    WHERE salary = (SELECT MAX(salary) FROM salaries)
+    );
 
 
