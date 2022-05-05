@@ -25,6 +25,7 @@ FROM dept_emp as de
          JOIN titles as t on e.emp_no = t.emp_no
 WHERE d.dept_no = 'd009'
   AND t.to_date > CURDATE()
+  AND de.to_date > CURDATE()
 GROUP BY Title;
 
 SELECT d.dept_name                            as 'Departments',
