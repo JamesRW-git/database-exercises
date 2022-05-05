@@ -22,11 +22,11 @@ WHERE emp_no IN (
 
 SELECT e.first_name, e.last_name
 FROM employees as e
-WHERE emp_no IN (
+WHERE e.gender = 'f'
+AND emp_no IN (
     SELECT dm.emp_no
     FROM dept_manager as dm
-    WHERE e.gender = 'f'
-    and dm.to_date > CURDATE()
+    WHERE dm.to_date > CURDATE()
     );
 
 
