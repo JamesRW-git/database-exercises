@@ -56,8 +56,8 @@ FROM users as u
          RIGHT JOIN roles as r on u.role_id = r.id;
 
 #Gives us all the roles with associated counts
-SELECT r.name as 'Role', COUNT(*) as 'Count'
-from roles as r
-JOIN users as u on u.role_id = r.id
-GROUP BY Role;
+SELECT r.name as 'Role', COUNT(u.name) as 'Count'
+from users as u
+RIGHT JOIN roles as r on u.role_id = r.id
+GROUP BY r.name;
 
